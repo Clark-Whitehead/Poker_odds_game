@@ -16,14 +16,12 @@ BoxLayoutExample:
 
 	GridLayout:
 		cols: 2
+		size_hint_y: 5
+		allow_stretch: True
 		Image:
 			source: root.card1
-			size_hint_y: 20
-			allow_stretch: True
 		Image:
 			source: root.card2
-			size_hint_y: 6
-			allow_stretch: True
 	GridLayout:
 		cols: 4
 		Button:
@@ -46,6 +44,10 @@ BoxLayoutExample:
 			font_size: "60dp"
 			background_color: root.color4
 			on_press: root.option4()
+	Button:
+		text: "Next"
+		font_size: 60
+		on_press: root.next()
 	Label:
 		text: "Opponents Cards"
 		font_size: 60
@@ -59,18 +61,13 @@ BoxLayoutExample:
 				pos: self.pos
 	GridLayout:
 		cols: 2
+		size_hint_y: 5
+		allow_stretch: True
 		Image:
 			source: root.card3
-			size_hint_y: 20
-			allow_stretch: True
 		Image:
 			source: root.card4
-			size_hint_y: 6
-			allow_stretch: True
 
 
-	Button:
-		text: "Next"
-		font_size: 60
-		on_press: root.next()
+
 
