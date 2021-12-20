@@ -78,7 +78,7 @@ class player:
 
 # # Create Players and Assign Hands
 
-# In[7]:
+# In[4]:
 
 
 deck1 = deck()
@@ -113,19 +113,32 @@ for i in range(numPlayers):
 
 # # Calculate probability Player1 wins
 
-# In[13]:
+# In[5]:
 
-
-handsList = []
 
 def probability_win(players):
+    
+    handsList = []
+    
     for player in players:
         for i in range(len(player.hand)):
             handsList.append("{}{}".format(player.hand[i].value, player.hand[i].suit))
     
 #     print(handsList)
     
-    return holdem_calc.calculate(None, False, 10000, None, handsList, False)
-    
-# print(probability_win(players))
+    return handsList, holdem_calc.calculate(None, False, 10000, None, handsList, False)
+  
+handsList, odds = probability_win(players)
+
+
+# In[7]:
+
+
+# handsList
+
+
+# In[ ]:
+
+
+print("clark")
 
