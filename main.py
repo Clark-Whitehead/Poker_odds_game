@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import deck
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
@@ -10,14 +11,10 @@ from kivy.properties import StringProperty
 
 
 class BoxLayoutExample(GridLayout):
-	cards = "./images/3_of_clubs.png"
+	cards = "./images/Ac.png"
 	my_text = StringProperty("Your Cards")
 	def on_button_click(self):
 		self.my_text = "You clikced"
-
-class MainWidget(Widget):
-    pass
-
 
 class thelabApp(App):
     pass
