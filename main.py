@@ -95,7 +95,7 @@ print(handsList)
 oddsMixed = []
 
 for i in range(3):
-    oddsMixed.append(random.randint(1,101))
+    oddsMixed.append(random.randint(1,100))
 
 oddsMixed.append(str(round(odds[1]*100)))
 
@@ -103,20 +103,70 @@ random.shuffle(oddsMixed)
 
 class BoxLayoutExample(GridLayout):
 
-	odd1 = "{}%".format(oddsMixed[0])
-	odd2 = "{}%".format(oddsMixed[1])
-	odd3 = "{}%".format(oddsMixed[2])
-	odd4 = "{}%".format(oddsMixed[3])
+	odd1 = StringProperty("{}%".format(oddsMixed[0]))
+	odd2 = StringProperty("{}%".format(oddsMixed[1]))
+	odd3 = StringProperty("{}%".format(oddsMixed[2]))
+	odd4 = StringProperty("{}%".format(oddsMixed[3]))
 
-	card1 = "./images/{}.png".format(handsList[0])
-	card2 = "./images/{}.png".format(handsList[1])
-	card3 = "./images/{}.png".format(handsList[2])
-	card4 = "./images/{}.png".format(handsList[3])
+	card1 = StringProperty("./images/{}.png".format(handsList[0]))
+	card2 = StringProperty("./images/{}.png".format(handsList[1]))
+	card3 = StringProperty("./images/{}.png".format(handsList[2]))
+	card4 = StringProperty("./images/{}.png".format(handsList[3]))
 	
 
 	my_text = StringProperty("Your Cards")
+    
+	def probability_win(players):
+    
+		handsList = []
+    
+		for player in players:
+			for i in range(len(player.hand)):
+				handsList.append("{}{}".format(player.hand[i].value, player.hand[i].suit))
+ 
+
+    
+		return handsList, holdem_calc.calculate(None, False, 10000, None, handsList, False)
+    
 	def on_button_click(self):
-		self.my_text = "You clikced"
+		deck1 = deck()
+		deck1.shuffle()
+        
+		numPlayers = 2
+
+		players = []
+        
+		for i in range(numPlayers):
+			players.append(player("player{}".format(i)))
+			players[i].draw(deck1)
+			players[i].draw(deck1)
+            
+		handsList, odds = probability_win(players)
+        
+		oddsMixed = []
+        
+		for i in range(3):
+			oddsMixed.append(random.randint(1,100))
+
+		oddsMixed.append(str(round(odds[1]*100)))
+
+		random.shuffle(oddsMixed)
+       
+		print(oddsMixed)
+		print(handsList)
+		print(odds[1])
+ 
+		self.odd1 = "{}%".format(oddsMixed[0])
+		self.odd2 = "{}%".format(oddsMixed[1])
+		self.odd3 = "{}%".format(oddsMixed[2])
+		self.odd4 = "{}%".format(oddsMixed[3])
+
+		print("odd1 = {}".format(self.odd1))
+
+		self.card1 = "./images/{}.png".format(handsList[0])
+		self.card2 = "./images/{}.png".format(handsList[1])
+		self.card3 = "./images/{}.png".format(handsList[2])
+		self.card4 = "./images/{}.png".format(handsList[3])
 
 class thelabApp(App):
     pass
