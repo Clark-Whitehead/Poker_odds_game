@@ -107,7 +107,10 @@ class BoxLayoutExample(GridLayout):
 
 	correctOdd = NumericProperty(int(round(odds[1]*100)))
 
-	color1 = StringProperty("1,0,0,1")
+	color1 = StringProperty("gray")	
+	color2 = StringProperty("gray")
+	color3 = StringProperty("gray")	
+	color4 = StringProperty("gray")	
 
 	od1 = NumericProperty(oddsMixed[0])
 	od2 = NumericProperty(oddsMixed[1])
@@ -143,12 +146,56 @@ class BoxLayoutExample(GridLayout):
 		pass
  
 	def option1(self):
-		print(self.correctOdd)
-		print(self.od1)
-		if self.od1 == self.correctOdd:
-			print("true")
+		if int(self.od1) == int(self.correctOdd):
+			self.color1 = "green"
+		elif int(self.od2) == int(self.correctOdd):
+			self.color2 = "green"
+			self.color1 = "red"
+		elif int(self.od3) == int(self.correctOdd):
+			self.color3 = "green"
+			self.color1 = "red"
 		else:
-			print("flase")
+			self.color4 = "green"
+			self.color1 = "red"
+
+	def option2(self):
+		if int(self.od2) == int(self.correctOdd):
+			self.color2 = "green"
+		elif int(self.od1) == int(self.correctOdd):
+			self.color1 = "green"
+			self.color2 = "red"
+		elif int(self.od3) == int(self.correctOdd):
+			self.color3 = "green"
+			self.color2 = "red"
+		else:
+			self.color4 = "green"
+			self.color2 = "red"
+
+	def option3(self):
+		if int(self.od3) == int(self.correctOdd):
+			self.color3 = "green"
+		elif int(self.od1) == int(self.correctOdd):
+			self.color1 = "green"
+			self.color3 = "red"
+		elif int(self.od2) == int(self.correctOdd):
+			self.color2 = "green"
+			self.color3 = "red"
+		else:
+			self.color4 = "green"
+			self.color3 = "red"
+
+	def option4(self):
+		if int(self.od4) == int(self.correctOdd):
+			self.color4 = "green"
+		elif int(self.od1) == int(self.correctOdd):
+			self.color1 = "green"
+			self.color4 = "red"
+		elif int(self.od2) == int(self.correctOdd):
+			self.color2 = "green"
+			self.color4 = "red"
+		else:
+			self.color3 = "green"
+			self.color4 = "red"
 
 	def next(self):
 		deck1 = deck()
@@ -179,6 +226,12 @@ class BoxLayoutExample(GridLayout):
 		print("odds mixed = {}".format(oddsMixed))
 		print(handsList)
 		print(odds[1])
+
+		self.color1 = "gray"
+		self.color2 = "gray"
+		self.color3 = "gray"
+		self.color4 = "gray"
+
 
 		self.od1 = oddsMixed[0]
 		self.od2 = oddsMixed[1]

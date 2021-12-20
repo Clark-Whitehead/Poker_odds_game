@@ -29,20 +29,23 @@ BoxLayoutExample:
 		Button:
 			text: root.odd1
 			font_size: 60
+			background_color: root.color1
 			on_press: root.option1()
 		Button:
 			text: root.odd2
 			font_size: 60
-			background_color: (1,0,0,1)
-			on_press: root.on_button_click()
+			background_color: root.color2
+			on_press: root.option2()
 		Button:
 			text: root.odd3
 			font_size: 60
-			on_press: root.on_button_click()
+			background_color: root.color3
+			on_press: root.option3()
 		Button:
 			text: root.odd4
 			font_size: "60dp"
-			on_press: root.on_button_click()
+			background_color: root.color4
+			on_press: root.option4()
 	Label:
 		text: "Opponents Cards"
 		font_size: 60
