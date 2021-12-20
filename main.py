@@ -7,6 +7,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.properties import StringProperty
+from kivy.properties import NumericProperty
+from kivy.properties import ListProperty
 
 import random
 import holdem_calc
@@ -103,6 +105,15 @@ random.shuffle(oddsMixed)
 
 class BoxLayoutExample(GridLayout):
 
+	correctOdd = NumericProperty(int(round(odds[1]*100)))
+
+	color1 = StringProperty("1,0,0,1")
+
+	od1 = NumericProperty(oddsMixed[0])
+	od2 = NumericProperty(oddsMixed[1])
+	od3 = NumericProperty(oddsMixed[2])
+	od4 = NumericProperty(oddsMixed[3])
+
 	odd1 = StringProperty("{}%".format(oddsMixed[0]))
 	odd2 = StringProperty("{}%".format(oddsMixed[1]))
 	odd3 = StringProperty("{}%".format(oddsMixed[2]))
@@ -127,8 +138,19 @@ class BoxLayoutExample(GridLayout):
 
     
 		return handsList, holdem_calc.calculate(None, False, 10000, None, handsList, False)
-    
+   
 	def on_button_click(self):
+		pass
+ 
+	def option1(self):
+		print(self.correctOdd)
+		print(self.od1)
+		if self.od1 == self.correctOdd:
+			print("true")
+		else:
+			print("flase")
+
+	def next(self):
 		deck1 = deck()
 		deck1.shuffle()
         
@@ -142,7 +164,9 @@ class BoxLayoutExample(GridLayout):
 			players[i].draw(deck1)
             
 		handsList, odds = probability_win(players)
-        
+       
+		self.correctOdd = int(round(odds[1]*100)) 
+ 
 		oddsMixed = []
         
 		for i in range(3):
@@ -152,9 +176,14 @@ class BoxLayoutExample(GridLayout):
 
 		random.shuffle(oddsMixed)
        
-		print(oddsMixed)
+		print("odds mixed = {}".format(oddsMixed))
 		print(handsList)
 		print(odds[1])
+
+		self.od1 = oddsMixed[0]
+		self.od2 = oddsMixed[1]
+		self.od3 = oddsMixed[2]
+		self.od4 = oddsMixed[3]
  
 		self.odd1 = "{}%".format(oddsMixed[0])
 		self.odd2 = "{}%".format(oddsMixed[1])

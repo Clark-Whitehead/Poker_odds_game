@@ -29,10 +29,11 @@ BoxLayoutExample:
 		Button:
 			text: root.odd1
 			font_size: 60
-			on_press: root.on_button_click()
+			on_press: root.option1()
 		Button:
 			text: root.odd2
 			font_size: 60
+			background_color: (1,0,0,1)
 			on_press: root.on_button_click()
 		Button:
 			text: root.odd3
@@ -68,5 +69,5 @@ BoxLayoutExample:
 	Button:
 		text: "Next"
 		font_size: 60
-		on_press: root.on_button_click()
+		on_press: root.next()
 
