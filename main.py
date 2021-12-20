@@ -81,19 +81,39 @@ def probability_win(players):
     for player in players:
         for i in range(len(player.hand)):
             handsList.append("{}{}".format(player.hand[i].value, player.hand[i].suit))
-    
-    print(handsList)
+   
+
     
     return handsList, holdem_calc.calculate(None, False, 10000, None, handsList, False)
   
 handsList, odds = probability_win(players)
 
+print(odds) 
+print(odds[1]) 
+print(handsList)
+
+oddsMixed = []
+
+for i in range(3):
+    oddsMixed.append(random.randint(1,101))
+
+oddsMixed.append(str(round(odds[1]*100)))
+
+random.shuffle(oddsMixed)
+
 class BoxLayoutExample(GridLayout):
+
+	odd1 = "{}%".format(oddsMixed[0])
+	odd2 = "{}%".format(oddsMixed[1])
+	odd3 = "{}%".format(oddsMixed[2])
+	odd4 = "{}%".format(oddsMixed[3])
 
 	card1 = "./images/{}.png".format(handsList[0])
 	card2 = "./images/{}.png".format(handsList[1])
 	card3 = "./images/{}.png".format(handsList[2])
 	card4 = "./images/{}.png".format(handsList[3])
+	
+
 	my_text = StringProperty("Your Cards")
 	def on_button_click(self):
 		self.my_text = "You clikced"
