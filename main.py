@@ -10,7 +10,8 @@ from kivy.properties import StringProperty
 
 
 class BoxLayoutExample(GridLayout):
-	my_text = StringProperty("Hellolkj")
+	cards = "./images/3_of_clubs.png"
+	my_text = StringProperty("Your Cards")
 	def on_button_click(self):
 		self.my_text = "You clikced"
 

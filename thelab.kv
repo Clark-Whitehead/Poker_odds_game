@@ -1,9 +1,72 @@
 BoxLayoutExample:
 
 <BoxLayoutExample>
-	rows: 3
-	Button:
-		text: "Click here"
-		on_press: root.on_button_click()
+	rows: 6
 	Label:
-		text: root.my_text
+		text: "Your Cards"
+		font_size: 60
+		color: (0,0,0,1)
+		background_color: (1,1,1,1)
+		canvas.before:
+			Color:
+				rgba: self.background_color
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+	GridLayout:
+		cols: 2
+		Image:
+			source: root.cards
+			size_hint_y: 20
+			allow_stretch: True
+		Image:
+			source: './images/2_of_clubs.png'
+			size_hint_y: 6
+			allow_stretch: True
+	GridLayout:
+		cols: 4
+		Button:
+			text: "Click here"
+			font_size: 60
+			on_press: root.on_button_click()
+		Button:
+			text: "Click here"
+			font_size: 60
+			on_press: root.on_button_click()
+		Button:
+			text: "Click here"
+			font_size: 60
+			on_press: root.on_button_click()
+		Button:
+			text: "Click here"
+			font_size: "60dp"
+			on_press: root.on_button_click()
+	Label:
+		text: "Opponents Cards"
+		font_size: 60
+		color: (0,0,0,1)
+		background_color: (1,1,1,1)
+		canvas.before:
+			Color:
+				rgba: self.background_color
+			Rectangle:
+				size: self.size
+				pos: self.pos
+	GridLayout:
+		cols: 2
+		Image:
+			source: './images/2_of_clubs.png'
+			size_hint_y: 20
+			allow_stretch: True
+		Image:
+			source: './images/2_of_clubs.png'
+			size_hint_y: 6
+			allow_stretch: True
+
+
+	Button:
+		text: "Next"
+		font_size: 60
+		on_press: root.on_button_click()
+
