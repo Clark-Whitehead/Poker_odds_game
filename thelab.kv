@@ -1,7 +1,7 @@
 BoxLayoutExample:
 
 <BoxLayoutExample>
-	rows: 6
+	rows: 9
 	Label:
 		text: "Your Cards"
 		font_size: 60
@@ -22,6 +22,17 @@ BoxLayoutExample:
 			source: root.card1
 		Image:
 			source: root.card2
+	Label:
+		text: "Guess Your Odds of Winning"
+		font_size: 60
+		color: (0,0,0,1)
+		background_color: (1,1,1,1)
+		canvas.before:
+			Color:
+				rgba: self.background_color
+			Rectangle:
+				size: self.size
+				pos: self.pos
 	GridLayout:
 		cols: 4
 		Button:
@@ -44,6 +55,41 @@ BoxLayoutExample:
 			font_size: "60dp"
 			background_color: root.color4
 			on_press: root.option4()
+	Label:
+		text: "Guess Odds of Tie"
+		font_size: 60
+		color: (0,0,0,1)
+		background_color: (1,1,1,1)
+		canvas.before:
+			Color:
+				rgba: self.background_color
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+	GridLayout:
+		cols: 4
+		Button:
+			text: root.tie1
+			font_size: 60
+			background_color: root.colorTie1
+			on_press: root.optionTie1()
+		Button:
+			text: root.tie2
+			font_size: 60
+			background_color: root.colorTie2
+			on_press: root.optionTie2()
+		Button:
+			text: root.tie3
+			font_size: 60
+			background_color: root.colorTie3
+			on_press: root.optionTie3()
+		Button:
+			text: root.tie4
+			font_size: "60dp"
+			background_color: root.colorTie4
+			on_press: root.optionTie4()
+
 	Button:
 		text: "Next"
 		font_size: 60

@@ -9,6 +9,8 @@ from kivy.uix.label import Label
 from kivy.properties import StringProperty
 from kivy.properties import NumericProperty
 from kivy.properties import ListProperty
+from kivy.properties import ReferenceListProperty
+from kivy.graphics import Color
 
 import random
 import holdem_calc
@@ -103,24 +105,53 @@ oddsMixed.append(str(round(odds[1]*100)))
 
 random.shuffle(oddsMixed)
 
+oddsTieMixed = []
+
+for i in range(3):
+    oddsTieMixed.append(random.randint(1,100))
+
+oddsTieMixed.append(str(round(odds[0]*100)))
+
+random.shuffle(oddsTieMixed)
+
+
 class BoxLayoutExample(GridLayout):
 
 	correctOdd = NumericProperty(int(round(odds[1]*100)))
+
+	correctTieOdd = NumericProperty(int(round(odds[0]*100)))
 
 	color1 = StringProperty("gray")	
 	color2 = StringProperty("gray")
 	color3 = StringProperty("gray")	
 	color4 = StringProperty("gray")	
 
+	colorTie1 = StringProperty("gray")	
+	colorTie2 = StringProperty("gray")
+	colorTie3 = StringProperty("gray")	
+	colorTie4 = StringProperty("gray")	
+
+
 	od1 = NumericProperty(oddsMixed[0])
 	od2 = NumericProperty(oddsMixed[1])
 	od3 = NumericProperty(oddsMixed[2])
 	od4 = NumericProperty(oddsMixed[3])
 
+	ti1 = NumericProperty(oddsTieMixed[0])
+	ti2 = NumericProperty(oddsTieMixed[1])
+	ti3 = NumericProperty(oddsTieMixed[2])
+	ti4 = NumericProperty(oddsTieMixed[3]) 
+
 	odd1 = StringProperty("{}%".format(oddsMixed[0]))
 	odd2 = StringProperty("{}%".format(oddsMixed[1]))
 	odd3 = StringProperty("{}%".format(oddsMixed[2]))
 	odd4 = StringProperty("{}%".format(oddsMixed[3]))
+
+	tie1 = StringProperty("{}%".format(oddsTieMixed[0]))
+	tie2 = StringProperty("{}%".format(oddsTieMixed[1]))
+	tie3 = StringProperty("{}%".format(oddsTieMixed[2]))
+	tie4 = StringProperty("{}%".format(oddsTieMixed[3]))
+
 
 	card1 = StringProperty("./images/{}.png".format(handsList[0]))
 	card2 = StringProperty("./images/{}.png".format(handsList[1]))
@@ -147,55 +178,108 @@ class BoxLayoutExample(GridLayout):
  
 	def option1(self):
 		if int(self.od1) == int(self.correctOdd):
-			self.color1 = "green"
+			self.color1 = "aqua"
 		elif int(self.od2) == int(self.correctOdd):
-			self.color2 = "green"
-			self.color1 = "red"
+			self.color2 = "aqua"
+			self.color1 = "orange"
 		elif int(self.od3) == int(self.correctOdd):
-			self.color3 = "green"
-			self.color1 = "red"
+			self.color3 = "aqua"
+			self.color1 = "orange"
 		else:
-			self.color4 = "green"
-			self.color1 = "red"
+			self.color4 = "aqua"
+			self.color1 = "orange"
 
 	def option2(self):
 		if int(self.od2) == int(self.correctOdd):
-			self.color2 = "green"
+			self.color2 = "aqua"
 		elif int(self.od1) == int(self.correctOdd):
-			self.color1 = "green"
-			self.color2 = "red"
+			self.color1 = "aqua"
+			self.color2 = "orange"
 		elif int(self.od3) == int(self.correctOdd):
-			self.color3 = "green"
-			self.color2 = "red"
+			self.color3 = "aqua"
+			self.color2 = "orange"
 		else:
-			self.color4 = "green"
-			self.color2 = "red"
+			self.color4 = "aqua"
+			self.color2 = "orange"
 
 	def option3(self):
 		if int(self.od3) == int(self.correctOdd):
-			self.color3 = "green"
+			self.color3 = "aqua"
 		elif int(self.od1) == int(self.correctOdd):
-			self.color1 = "green"
-			self.color3 = "red"
+			self.color1 = "aqua"
+			self.color3 = "orange"
 		elif int(self.od2) == int(self.correctOdd):
-			self.color2 = "green"
-			self.color3 = "red"
+			self.color2 = "aqua"
+			self.color3 = "orange"
 		else:
-			self.color4 = "green"
-			self.color3 = "red"
+			self.color4 = "aqua"
+			self.color3 = "orange"
 
 	def option4(self):
 		if int(self.od4) == int(self.correctOdd):
-			self.color4 = "green"
+			self.color4 = "aqua"
 		elif int(self.od1) == int(self.correctOdd):
-			self.color1 = "green"
-			self.color4 = "red"
+			self.color1 = "aqua"
+			self.color4 = "orange"
 		elif int(self.od2) == int(self.correctOdd):
-			self.color2 = "green"
-			self.color4 = "red"
+			self.color2 = "aqua"
+			self.color4 = "orange"
 		else:
-			self.color3 = "green"
-			self.color4 = "red"
+			self.color3 = "aqua"
+			self.color4 = "orange"
+
+	def optionTie1(self):
+		if int(self.ti1) == int(self.correctTieOdd):
+			self.colorTie1 = "aqua"
+		elif int(self.ti2) == int(self.correctTieOdd):
+			self.colorTie2 = "aqua"
+			self.colorTie1 = "orange"
+		elif int(self.ti3) == int(self.correctTieOdd):
+			self.colorTie3 = "aqua"
+			self.colorTie1 = "orange"
+		else:
+			self.colorTie4 = "aqua"
+			self.colorTie1 = "orange"
+
+	def optionTie2(self):
+		if int(self.ti2) == int(self.correctTieOdd):
+			self.colorTie2 = "aqua"
+		elif int(self.ti1) == int(self.correctTieOdd):
+			self.colorTie1 = "aqua"
+			self.colorTie2 = "orange"
+		elif int(self.ti3) == int(self.correctTieOdd):
+			self.colorTie3 = "aqua"
+			self.colorTie2 = "orange"
+		else:
+			self.colorTie4 = "aqua"
+			self.colorTie2 = "orange"
+
+	def optionTie3(self):
+		if int(self.ti3) == int(self.correctTieOdd):
+			self.colorTie3 = "aqua"
+		elif int(self.ti1) == int(self.correctTieOdd):
+			self.colorTie1 = "aqua"
+			self.colorTie3 = "orange"
+		elif int(self.ti2) == int(self.correctTieOdd):
+			self.colorTie2 = "aqua"
+			self.colorTie3 = "orange"
+		else:
+			self.colorTie4 = "aqua"
+			self.colorTie3 = "orange"
+
+	def optionTie4(self):
+		if int(self.ti4) == int(self.correctTieOdd):
+			self.colorTie4 = "aqua"
+		elif int(self.ti1) == int(self.correctTieOdd):
+			self.colorTie1 = "aqua"
+			self.colorTie4 = "orange"
+		elif int(self.ti2) == int(self.correctTieOdd):
+			self.colorTie2 = "aqua"
+			self.colorTie4 = "orange"
+		else:
+			self.colorTie3 = "aqua"
+			self.colorTie4 = "orange"
+
 
 	def next(self):
 		deck1 = deck()
@@ -214,6 +298,8 @@ class BoxLayoutExample(GridLayout):
        
 		self.correctOdd = int(round(odds[1]*100)) 
  
+		self.correctTieOdd = int(round(odds[0]*100))
+
 		oddsMixed = []
         
 		for i in range(3):
@@ -222,7 +308,17 @@ class BoxLayoutExample(GridLayout):
 		oddsMixed.append(str(round(odds[1]*100)))
 
 		random.shuffle(oddsMixed)
-       
+      
+		oddsTieMixed = []
+
+		for i in range(3):
+		    oddsTieMixed.append(random.randint(1,100))
+
+		oddsTieMixed.append(str(round(odds[0]*100)))
+
+		random.shuffle(oddsTieMixed)
+
+ 
 		print("odds mixed = {}".format(oddsMixed))
 		print(handsList)
 		print(odds[1])
@@ -231,6 +327,11 @@ class BoxLayoutExample(GridLayout):
 		self.color2 = "gray"
 		self.color3 = "gray"
 		self.color4 = "gray"
+
+		self.colorTie1 = "gray"
+		self.colorTie2 = "gray"
+		self.colorTie3 = "gray"
+		self.colorTie4 = "gray"
 
 
 		self.od1 = oddsMixed[0]
@@ -242,6 +343,17 @@ class BoxLayoutExample(GridLayout):
 		self.odd2 = "{}%".format(oddsMixed[1])
 		self.odd3 = "{}%".format(oddsMixed[2])
 		self.odd4 = "{}%".format(oddsMixed[3])
+
+		self.ti1 = oddsTieMixed[0]
+		self.ti2 = oddsTieMixed[1]
+		self.ti3 = oddsTieMixed[2]
+		self.ti4 = oddsTieMixed[3]
+ 
+		self.tie1 = "{}%".format(oddsTieMixed[0])
+		self.tie2 = "{}%".format(oddsTieMixed[1])
+		self.tie3 = "{}%".format(oddsTieMixed[2])
+		self.tie4 = "{}%".format(oddsTieMixed[3])
+
 
 		print("odd1 = {}".format(self.odd1))
 
