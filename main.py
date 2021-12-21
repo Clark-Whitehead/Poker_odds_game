@@ -77,20 +77,31 @@ for i in range(numPlayers):
     players.append(player("player{}".format(i)))
     players[i].draw(deck1)
     players[i].draw(deck1)
-    
-def probability_win(players):
-    
-    handsList = []
-    
-    for player in players:
-        for i in range(len(player.hand)):
-            handsList.append("{}{}".format(player.hand[i].value, player.hand[i].suit))
    
+flop = player("flop")
 
-    
-    return handsList, holdem_calc.calculate(None, False, 10000, None, handsList, False)
-  
-handsList, odds = probability_win(players)
+flopNumCards = random.randint(3,4)
+
+for i in range(flopNumCards):
+	flop.draw(deck1)
+
+def probability_win(players, flop):
+
+	handsList = []
+
+	for player in players:
+		for i in range(len(player.hand)):
+			handsList.append("{}{}".format(player.hand[i].value, player.hand[i].suit))
+
+	flopList = []
+
+
+	for i in range(len(flop.hand)):
+		flopList.append("{}{}".format(flop.hand[i].value, flop.hand[i].suit))
+
+	return handsList, flopList, holdem_calc.calculate(flopList, False, 10000, None, handsList, False)
+
+handsList, flopList, odds = probability_win(players, flop)
 
 print(odds) 
 print(odds[1]) 
@@ -157,7 +168,19 @@ class BoxLayoutExample(GridLayout):
 	card2 = StringProperty("./images/{}.png".format(handsList[1]))
 	card3 = StringProperty("./images/{}.png".format(handsList[2]))
 	card4 = StringProperty("./images/{}.png".format(handsList[3]))
-	
+
+	if len(flopList) == 3:
+		flopCard1 = StringProperty("./images/{}.png".format(flopList[0]))
+		flopCard2 = StringProperty("./images/{}.png".format(flopList[1]))
+		flopCard3 = StringProperty("./images/{}.png".format(flopList[2]))
+		flopCard4 = ""
+	else:
+		flopCard1 = StringProperty("./images/{}.png".format(flopList[0]))
+		flopCard2 = StringProperty("./images/{}.png".format(flopList[1]))
+		flopCard3 = StringProperty("./images/{}.png".format(flopList[2]))
+		flopCard4 = StringProperty("./images/{}.png".format(flopList[3]))
+
+
 
 	my_text = StringProperty("Your Cards")
     
@@ -293,8 +316,16 @@ class BoxLayoutExample(GridLayout):
 			players.append(player("player{}".format(i)))
 			players[i].draw(deck1)
 			players[i].draw(deck1)
-            
-		handsList, odds = probability_win(players)
+        
+		flop = player("flop")
+
+		flopNumCards = random.randint(3,4)
+
+		for i in range(flopNumCards):
+			flop.draw(deck1)
+
+    
+		handsList, flopList, odds = probability_win(players, flop)
        
 		self.correctOdd = int(round(odds[1]*100)) 
  
@@ -361,6 +392,18 @@ class BoxLayoutExample(GridLayout):
 		self.card2 = "./images/{}.png".format(handsList[1])
 		self.card3 = "./images/{}.png".format(handsList[2])
 		self.card4 = "./images/{}.png".format(handsList[3])
+
+		if len(flopList) == 3:
+			self.flopCard1 = "./images/{}.png".format(flopList[0])
+			self.flopCard2 = "./images/{}.png".format(flopList[1])
+			self.flopCard3 = "./images/{}.png".format(flopList[2])
+			self.flopCard4 = ""
+		else:
+			self.flopCard1 = "./images/{}.png".format(flopList[0])
+			self.flopCard2 = "./images/{}.png".format(flopList[1])
+			self.flopCard3 = "./images/{}.png".format(flopList[2])
+			self.flopCard4 = "./images/{}.png".format(flopList[3])
+
 
 class thelabApp(App):
     pass
