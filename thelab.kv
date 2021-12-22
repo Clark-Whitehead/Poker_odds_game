@@ -1,7 +1,7 @@
 BoxLayoutExample:
 
 <BoxLayoutExample>
-	rows: 11
+	rows: 13
 	Label:
 		text: "Your Cards"
 		font_size: 60
@@ -136,6 +136,28 @@ BoxLayoutExample:
 			source: root.card3
 		Image:
 			source: root.card4
+	Label:
+		text: "Accuracy"
+		font_size: 60
+		color: (0,0,0,1)
+		background_color: (1,1,1,1)
+		canvas.before:
+			Color:
+				rgba: self.background_color
+			Rectangle:
+				size: self.size
+				pos: self.pos
+	Label:
+		text: root.accuracy
+		font_size: 60
+		color: (0,0,0,1)
+		background_color: (1,1,1,1)
+		canvas.before:
+			Color:
+				rgba: self.background_color
+			Rectangle:
+				size: self.size
+				pos: self.pos
 
 
 

@@ -128,6 +128,12 @@ random.shuffle(oddsTieMixed)
 
 class BoxLayoutExample(GridLayout):
 
+	score = 0
+	total = 1
+	accuracy = StringProperty("{}%".format((score / total)*100))
+
+
+
 	correctOdd = NumericProperty(int(round(odds[1]*100)))
 
 	correctTieOdd = NumericProperty(int(round(odds[0]*100)))
@@ -199,10 +205,12 @@ class BoxLayoutExample(GridLayout):
    
 	def on_button_click(self):
 		pass
+
  
 	def option1(self):
 		if int(self.od1) == int(self.correctOdd):
 			self.color1 = "aqua"
+			self.score += 1
 		elif int(self.od2) == int(self.correctOdd):
 			self.color2 = "aqua"
 			self.color1 = "orange"
@@ -216,6 +224,7 @@ class BoxLayoutExample(GridLayout):
 	def option2(self):
 		if int(self.od2) == int(self.correctOdd):
 			self.color2 = "aqua"
+			self.score += 1
 		elif int(self.od1) == int(self.correctOdd):
 			self.color1 = "aqua"
 			self.color2 = "orange"
@@ -229,6 +238,7 @@ class BoxLayoutExample(GridLayout):
 	def option3(self):
 		if int(self.od3) == int(self.correctOdd):
 			self.color3 = "aqua"
+			self.score += 1
 		elif int(self.od1) == int(self.correctOdd):
 			self.color1 = "aqua"
 			self.color3 = "orange"
@@ -242,6 +252,7 @@ class BoxLayoutExample(GridLayout):
 	def option4(self):
 		if int(self.od4) == int(self.correctOdd):
 			self.color4 = "aqua"
+			self.score += 1
 		elif int(self.od1) == int(self.correctOdd):
 			self.color1 = "aqua"
 			self.color4 = "orange"
@@ -308,7 +319,11 @@ class BoxLayoutExample(GridLayout):
 	def next(self):
 		deck1 = deck()
 		deck1.shuffle()
-        
+       
+		self.total += 1
+
+		self.accuracy = "{}%".format((self.score / self.total)*100)
+ 
 		numPlayers = 2
 
 		players = []
