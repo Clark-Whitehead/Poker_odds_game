@@ -173,7 +173,8 @@ class BoxLayoutExample(GridLayout):
 		flopCard1 = StringProperty("./images/{}.png".format(flopList[0]))
 		flopCard2 = StringProperty("./images/{}.png".format(flopList[1]))
 		flopCard3 = StringProperty("./images/{}.png".format(flopList[2]))
-		flopCard4 = ""
+		flopCard4 = StringProperty("./images/red_joker.png")
+
 	else:
 		flopCard1 = StringProperty("./images/{}.png".format(flopList[0]))
 		flopCard2 = StringProperty("./images/{}.png".format(flopList[1]))
@@ -397,7 +398,7 @@ class BoxLayoutExample(GridLayout):
 			self.flopCard1 = "./images/{}.png".format(flopList[0])
 			self.flopCard2 = "./images/{}.png".format(flopList[1])
 			self.flopCard3 = "./images/{}.png".format(flopList[2])
-			self.flopCard4 = ""
+			self.flopCard4 = "./images/red_joker.png"
 		else:
 			self.flopCard1 = "./images/{}.png".format(flopList[0])
 			self.flopCard2 = "./images/{}.png".format(flopList[1])
