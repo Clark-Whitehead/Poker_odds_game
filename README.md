@@ -2,10 +2,6 @@
 
 ### Brush up on your poker odds before playing for real money.
 
-<img src="# I built a real self driving car Mom!
-
-### AI car learns to drive.... in simulation (o_0)
-
 <img src="https://github.com/Clark-Whitehead/Poker_odds_game/blob/main/poker_odds_game.png?raw=true" width="500" alt="sample_output">
 
 ### How to run:
